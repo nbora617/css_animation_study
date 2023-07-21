@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>애니메이션1</title>
+    <style>
+        #btn1 {
+            background:palegoldenrod;
+            width:100px; 
+            border:5px solid #000; padding:10px;
+            position:relative; left:0;
+            transition:all 1s;
+        }
+        #btn1:hover {
+            background:rgb(252, 231, 0);
+            /* transition: 애니메이션적용속성 지속시간 */
+            width:150px; height:50px;
+            border:10px solid #00e; padding:30px;
+            border-radius:20px;
+            position:relative; left:100px;
+        }
+        #btn2 {
+            width:100px;
+            transition:width 1.5s cubic-bezier(0.25, 0.1, 0, 1.32) 2s;
+        }
+        /* transform 연습 */
+        #btn2:hover {
+            width:200px;
+        }
+        #btn3 {
+            padding:10px;
+        }
+        /* btn3에 마우스를 올렸을 때 그 형제 box가 변경 */
+        #btn3:hover ~.box {
+            background:pink;
+            /* transform:속성(값) 속성(값) ==자식, 자손에게도 영향 */
+            /* transform:scaleX(2) scaleY(2); 1=100% */
+            /* transform:rotate(-60deg); */
+            transform:skewY(60deg);
+            transform:translate(100px,50px);
+        }
+        .box {
+            width:100px; height:100px;
+            background:palegoldenrod;
+            transition:transform 0.5s;
+        }
+        #btn4 {
+            padding:10px;
+        }
+        #btn4:hover +.target {
+            background:purple;
+            transform:scale(3) translate(50px,30px);
+        }
+        .target {
+            background:plum;
+            width:100px; height:100px; display:block;
+            transition:transform 1s;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <button id="btn1">animation1</button>
+        </li>
+        <li>
+            <!-- 서버에 보내지 않는 누르는 기능의 버튼은 type=button -->
+            <button type="button" id=btn2>animation2</button>  
+        </li>
+        <li>
+            <button id="btn3" type="button">transform1</button>
+            <hr>
+            <div class="box">box</div>
+        </li>
+        <li>
+            <button id="btn4" type="button">transform2</button>
+            <span class="target">적용대상</span>
+        </li>
+        <li></li>
+    </ul>
+</body>
+</html>
